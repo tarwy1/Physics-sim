@@ -4,10 +4,9 @@
 #include <array>
 #include <algorithm>
 #include <exception>
-
 #include <cmath>
-
 #include <GL/glut.h>
+
 
 namespace Phi {
     namespace Math {
@@ -129,7 +128,7 @@ namespace Phi {
         void dump() {
             for(std::size_t i = 0; i < this->elements.size(); ++i) {
                 std::cout << this->elements[i] << ' ';
-                if(!i % rows) std::cout << '\n';
+                if(!(i % rows)) std::cout << '\n';
             }
         }
     };
@@ -200,9 +199,13 @@ namespace Phi {
                     area = length * width;
                     break;
                 }
-                case ShapeType::Triangle:
+                case ShapeType::Triangle: {
+                    std::cout << "case unsupported!  (weirdo)\n";
+                    break;
+                }
                 case ShapeType::Semicircle: {
-                    std::cerr << "Unimplemeneted area/perimiter calculation" << '\n';
+                    perimeter = 2 * radius + Math::Constant::pi * radius;
+                    area = 0.5 * Math::Constant::pi * radius * radius;
                     break;
                 }
             }
@@ -224,7 +227,7 @@ namespace Phi {
         double rotation = 0; // Radians rotation
 
         double mass; // kg
-        double staticFriction = 0; // 0 < u < 1
+        double staticFriction = 0.0; // 0 < u < 1
         double kineticFriction = 0; // 0 < u < 1
 
         bool fixed = true; // Whether the body can move
@@ -232,7 +235,9 @@ namespace Phi {
 
         bool rigid = true; // Cannot deform
 
-        Body(const Shape& shape, double mass) : shape(shape), mass(mass) {}
+        Body(const Shape& shape, double mass, double staticFriction = 0.0, double kineticFriction = 0.0, double rotation = 0.0, double radius = 0.0, double length = 0.0, double width = 0.0) : mass(mass), staticFriction(staticFriction), kineticFriction(kineticFriction), rotation(rotation), shape(shape.type == Shape::ShapeType::Circle ? radius : shape.type == Shape::ShapeType::Square ? length : shape.type == Shape::ShapeType::Rectangle ? length, width : shape), position(){
+
+        }
     };
 };
 
