@@ -6,4 +6,6 @@
 *.lastbuildstate
 *.obj
 *.exe
+.vscode
+*.out
 

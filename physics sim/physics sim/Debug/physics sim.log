@@ -1,4 +1,0 @@
-﻿  Main.cpp
-C:\Users\Charlie Headon\source\repos\physics sim\physics sim\Main.cpp(190,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Charlie Headon\source\repos\physics sim\physics sim\Main.cpp(209,14): warning C4101: 'graphic': unreferenced local variable
-  physics sim.vcxproj -> C:\Users\Charlie Headon\source\repos\physics sim\Debug\physics sim.exe
